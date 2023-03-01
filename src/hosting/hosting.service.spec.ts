@@ -1,4 +1,6 @@
+import { getQueueToken } from '@nestjs/bull';
 import { Test, TestingModule } from '@nestjs/testing';
+import { HostingModule } from './hosting.module';
 import { HostingService } from './hosting.service';
 
 describe('HostingService', () => {
@@ -6,8 +8,10 @@ describe('HostingService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [HostingService],
-    }).compile();
+      imports: [HostingModule],
+    }).overrideProvider(getQueueToken("terraform"))
+      .useValue("terraform")
+      .compile();
 
     service = module.get<HostingService>(HostingService);
   });
