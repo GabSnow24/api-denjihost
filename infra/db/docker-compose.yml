@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: 3xa
+      POSTGRES_PASSWORD: "12345"
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5438:5432"
+    restart: unless-stopped
+  postgres_denji_hosting:
+    container_name: denjihosting
+    image: postgres
+    environment:
+      POSTGRES_USER: denjihosting
+      POSTGRES_PASSWORD: "12345"
+      PGDATA: /data/postgres
+    expose:
+      - "5433"
+    volumes:
+      - denji_hosting:/data/postgres
+    command: -p 5433
+    ports:
+      - "5439:5433"
+    restart: unless-stopped
+
+volumes:
+  postgres:
+  denji_hosting:

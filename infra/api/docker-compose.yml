@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  3xa:
+    container_name: 3xa
+    image: qzzdocker24/3xa:latest
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    healthcheck:
+      test: "curl -sS http://3xa:8080/health"
+      interval: 1s
+      timeout: 30s
+      retries: 6
