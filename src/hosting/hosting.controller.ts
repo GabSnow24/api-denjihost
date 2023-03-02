@@ -43,9 +43,9 @@ export class HostingController {
 
   @ApiResponse({
     status: HttpStatus.NO_CONTENT,
-    description: 'The item have been update.',
+    description: 'The hosting have been update.',
   })
-  @ApiOperation({ summary: 'Update the selected item' })
+  @ApiOperation({ summary: 'Update the selected hosting' })
   @ApiParam({ name: "id" })
   @Put(':id')
   update(@Param('id') id: string, @Body() updateHostingDto: UpdateHostingDto) {
@@ -54,9 +54,9 @@ export class HostingController {
 
   @ApiResponse({
     status: HttpStatus.NO_CONTENT,
-    description: 'The item have been deleted.',
+    description: 'The hosting have been deleted.',
   })
-  @ApiOperation({ summary: 'Delete the selected item' })
+  @ApiOperation({ summary: 'Delete the selected hosting' })
   @ApiParam({ name: "id" })
   @Delete(':id')
   remove(@Param('id') id: string) {
