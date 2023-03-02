@@ -16,7 +16,7 @@ export class WorkersService {
   async create(job: Job) {
     const { name } = job.data
     const fileContent = `
-    env = [{ key="API_PORT", value="8080" },{ key="DATABASE_URL", value="postgresql://3xa:12345@34.125.137.241:5438/3xa" } ]
+    env = [{ key="API_PORT", value="8080" },{ key="DATABASE_URL", value="${process.env.DATABASE_3XA}" } ]
     project-image="qzzdocker24/3xa"
     cloudrun_name="${name.split(" ").join("").toLocaleLowerCase()}" 
     port=8080
